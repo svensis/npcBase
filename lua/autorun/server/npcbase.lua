@@ -20,7 +20,7 @@ function NPCSetup(ent, audio, delay, audio2, delay2, teleport, pos, ang)
                     file.Write(tostring(ply:SteamID64()) .. "/" .. ent:GetClass() .. ".txt")
 
                     timer.Simple(delay2, function()
-                        hook.Run("NPCHook_" .. ent:GetClass() .. "+" .. ent:EntIndex(), ply)
+                        hook.Run("NPCHook_" .. ent:GetClass() .. "+" .. ent:EntIndex(), ply, ent)
                     end)
                 end)
             end)

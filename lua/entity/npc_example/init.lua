@@ -12,7 +12,10 @@ function ENT:Initialize()
     self:SetUseType(SIMPLE_USE) -- Press "USE" to interact with
     self:DropToFloor()
     self:ResetSequenceInfo()
-    self:SetSequence("lineidle03")
+    timer.Simple(0.5, function()
+        self:ResetSequenceInfo()
+        self:SetSequence("lineidle03")
+    end)
 
     self:DoEyes()
     self:StartSpeaking()
@@ -44,7 +47,7 @@ function ENT:StartSpeaking()
         if CurTime() < self.delay2 then return end
         NPCSetup(self, "vo/ravenholm/yard_greetings.wav", 4.5, "vo/ravenholm/shotgun_moveon.wav", 5.5)
 
-        function CustomNPCFunction(ply)
+        function CustomNPCFunction(ply, ent)
             ply:ScreenFade(SCREENFADE.IN, Color(255, 255, 255, 255), 0.5, 2)
             ply:Freeze(false)
             ply:SetPos(Vector(1888.898315, -715.093201, -79.968750))
