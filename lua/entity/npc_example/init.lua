@@ -49,6 +49,7 @@ function ENT:StartSpeaking()
             ply:Freeze(false)
             ply:SetPos(Vector(1888.898315, -715.093201, -79.968750))
             ply:SetEyeAngles(Angle(-1.231997, 5.484989, 0.000000))
+			ply:SetNWBool("DidSpoke" .. self:EntIndex(), true)
         end
 
         hook.Add("NPCHook_" .. self:GetClass() .. "+" .. self:EntIndex(), "FinishedNPCTalking", CustomNPCFunction)
